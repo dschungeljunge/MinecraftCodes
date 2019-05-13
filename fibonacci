@@ -1,0 +1,22 @@
+player.onChat("fibonacci", function (num) {
+    let b = 0
+    let a = 1
+    let temp = 0
+
+    agent.setSlot(1)
+    agent.setItem(Block.Grass, 64, 1)
+    agent.teleportToPlayer()
+    agent.move(SixDirection.Forward, 1)
+    agent.move(SixDirection.Down, 1)
+
+    while (num >= 0) {
+        temp = a
+        a = a + b
+        b = temp
+        num += -1
+        agent.setAssist(AgentAssist.PlaceOnMove, true)
+        agent.move(SixDirection.Up, b)
+        agent.move(SixDirection.Forward, 1)
+    }
+})
+
